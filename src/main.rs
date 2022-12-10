@@ -84,7 +84,9 @@ async fn create_gist(content: String, file: &str, key: String) {
     let resp = client
         .post("https://api.github.com/gists")
         .headers(headers)
-        .json(&body);
+        .json(&body)
+        .send()
+        .await;
 
     println!("{:?}", resp);
 }
